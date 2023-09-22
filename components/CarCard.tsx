@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { CarProps } from '@/types';
 import CustomButton from './CustomButton';
 import { calculateCarRent } from '@/utils';
+import CarDetails from './CarDetails';
 
 interface carCardProps {
   car: CarProps;
@@ -45,9 +46,7 @@ const CarCard = ({ car }: carCardProps) => {
               height={20}
               alt='steering wheel'
             />
-            <p className='text-[14px]'>
-              {transmission === 'a' ? 'Automatic' : 'Manual'}
-            </p>
+            <p className='text-[14px]'>{transmission === 'a' ? 'Automatic' : 'Manual'}</p>
           </div>
           <div className='flex flex-col justify-center items-center gap-2'>
             <Image
@@ -78,6 +77,12 @@ const CarCard = ({ car }: carCardProps) => {
           />
         </div>
       </div>
+
+      <CarDetails
+        isOpen={isOpen}
+        closeModal={() => setIsOpen(false)}
+        car={car}
+      />
     </div>
   );
 };
