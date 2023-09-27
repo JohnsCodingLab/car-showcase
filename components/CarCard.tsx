@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { CarProps } from '@/types';
 import CustomButton from './CustomButton';
-import { calculateCarRent } from '@/utils';
+import { calculateCarRent, generateCarImageUrl } from '@/utils';
 import CarDetails from './CarDetails';
 
 interface carCardProps {
@@ -26,11 +26,11 @@ const CarCard = ({ car }: carCardProps) => {
       <p className='flex mt-6 text-[32px] font-extrabold'>
         <span className='self-start text-[14px] font-semibold'>$</span>
         {carRent}
-        <span className='self-start text-[14px] font-medium'>/day</span>
+        <span className='self-end text-[14px] font-medium'>/day</span>
       </p>
-      <div className='relative w-full h-40 my-3 object-container'>
+      <div className='relative w-full h-40 my-3 object-contain'>
         <Image
-          src='/hero.png'
+          src={generateCarImageUrl(car)}
           alt='car model'
           fill
           priority
